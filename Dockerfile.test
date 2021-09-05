@@ -1,0 +1,12 @@
+FROM node:lts-alpine as builder
+
+WORKDIR /app
+
+COPY package.json yarn.lock tsconfig.json ./
+
+RUN yarn
+
+COPY ./jest.* ./
+COPY ./src ./src
+COPY ./tests ./tests
+
